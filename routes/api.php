@@ -29,7 +29,6 @@ Route::get('collection/{id}', function (Request $request){
             "subtitle" =>"老少鹹宜，生活好去處",
             "bgColor"=>"yellow",
             "icon"=>"blahblah/blahblah.png",
-            "heyhey" => "heyheyhey",
             "trails"=>[
                 [
                 "id"=>"1",
