@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\CollectionConroller;
+use App\Http\Controllers\TrailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,7 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-Route::get('/collection/{id}', function (Request $request) {
+
+//Route::get('/collection/{id}',[CollectionConroller::class,'show']);
+Route::resource('collection',CollectionConroller::class);
+/*Route::get('/collection/{id}', function (Request $request) {
+
 
     if ($request->header('X-Secure-Code') != '12345678') {
         return response(['error' => 'Secure code not valid.'], 403);
@@ -53,4 +59,4 @@ Route::get('/collection/{id}', function (Request $request) {
             ]
         ]
     ];
-}); 
+}); */
