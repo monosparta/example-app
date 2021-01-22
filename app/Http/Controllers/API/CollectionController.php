@@ -43,7 +43,7 @@ class CollectionController extends Controller
             return response(['error' => 'Secure code nt valid.'], 403);
         }
 
-        // php laravel不支援直接輸出JSON，物件需用陣列改寫
+        // 從資料庫提出所需資料，並對應URL參數
         return response()->json(DB::table('collections')->find($id));
     }
 
