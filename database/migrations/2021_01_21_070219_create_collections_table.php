@@ -22,7 +22,6 @@ class CreateCollectionsTable extends Migration
             $table->timestamps();
         });
     }
-    }
 
     /**
      * Reverse the migrations.
@@ -33,4 +32,4 @@ class CreateCollectionsTable extends Migration
     {
         Schema::dropIfExists('collections');
     }
-}
+
