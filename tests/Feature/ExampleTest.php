@@ -12,10 +12,32 @@ class ExampleTest extends TestCase
      *
      * @return void
      */
-    public function testBasicTest()
+    public function testApiWithCorrectKey() // 函式要以test開頭命名，否則不被識別與執行
     {
-        $response = $this->get('/');
+        $response = $this->withHeaders([
+            'X-Secure-Code' => '123456789',
+        ])->get('/api/collection/1');
 
-        $response->assertStatus(200);
+        $response
+            ->assertStatus(200)
+            ->assertJsonPath('title', '親子步道') // 包含特定資料
+            ->assertJsonStructure([ // 檢查資料架構
+            "id",
+            "title",
+            "subTitle",
+            "bgColor",
+            "iconImage",
+            // "trails"
+            ]);
+    }
+
+    public function testApiWithoutCorrectKey()
+    {
+        $response = $this->withHeaders([ // 檢查header是否攜帶key 
+            'X-Secure-Code' => '12345679',
+        ])->get('/api/collection/1');
+
+        $response
+            ->assertStatus(403);
     }
 }
