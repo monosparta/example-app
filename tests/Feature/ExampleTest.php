@@ -18,4 +18,30 @@ class ExampleTest extends TestCase
 
         $response->assertStatus(200);
     }
+
+    public function testFetchJsonWithoutSecureCode()
+    {
+        $response = $this->getJson('/api/collection/0');
+
+        $response->assertStatus(403);
+    }
+
+    public function testFetchJsonWithSecureCode()
+    {
+        $response = $this->withHeaders([
+            'X-Secure-Code' => '1234',
+        ])->getJson('/api/collection/0');
+
+        $response
+            ->assertStatus(200)
+            ->assertJsonPath('title', '親子步道')
+            ->assertJsonStructure([
+                'id',
+                'title',
+                'subTitle',
+                'bgColor',
+                'iconImage',
+                'trails',
+            ]);
+    }
 }
