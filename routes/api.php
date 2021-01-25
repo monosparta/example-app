@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\API\CollectionController;
+use App\Http\Controllers\API\TrailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +26,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // 使用Controller的寫法
 Route::resource('collection', CollectionController::class); 
 
-// 將動作直接放在route的寫法
-// php laravel不支援直接輸出JSON，物件需用陣列改寫
+/* 將動作直接放在route的寫法
+php laravel不支援直接輸出JSON，物件需用陣列改寫 */
 // Route::get('/collection/{id}', function (Request $request) {
 //       if ($request->header('X-Secure-Code') != '12345678') {	
 //         return response(['error' => 'Secure code not valid.'], 403);	
@@ -34,3 +35,5 @@ Route::resource('collection', CollectionController::class);
 
 //     return [json => content];	
 // }); 
+
+Route::post("/trail", [TrailController::class, 'createNewTrail']);
