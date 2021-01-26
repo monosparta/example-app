@@ -22,4 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::resource('collection', CollectionController::class); //上述程式為新增一個路由 collection 並使用 resource 這個 function 可以自動處理 CollectionController 中的方法，自動判別是要使用 show, destroy, update 等 function. //resouce({路由名字}, {controller中要使用的class名字})
 
-Route::post('/trail', [TrailController::class, 'postNewTrail']);
+Route::resource('/trail', TrailController::class);

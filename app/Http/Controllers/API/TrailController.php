@@ -18,7 +18,7 @@ class TrailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function postNewTrail(Request $request)
+    public function store(Request $request)
     {
         if($request->header('X-Secure-Code')!='12345678'){
             return response(['error' => 'Secure code not valide.'], 403);
