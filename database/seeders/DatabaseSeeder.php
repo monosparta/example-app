@@ -17,5 +17,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CollectionSeeder::class,
         ]);
+        $this->call([
+            TrailSeeder::class,
+        ]);
     }
 }

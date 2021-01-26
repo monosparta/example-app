@@ -18,6 +18,9 @@ use App\Http\Controllers\API\CollectionController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Route::middleware('auth:api')->group(function () { 
+    Route::apiResource('post', 'api\PostController');
+});
 /*
 Route::get('/collection/{id}', function (Request $request) {
 
@@ -58,3 +61,4 @@ Route::get('/collection/{id}', function (Request $request) {
 }); 
 */
 Route::resource('collection', CollectionController::class); 
+Route::post("/trail", [TrailController::class, 'createNewTrail']);

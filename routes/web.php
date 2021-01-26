@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/posts/', function () {
+    $response = "All Posts: ";
+    $posts = Post::all();
+    foreach ($posts as $post) {
+        $response .= $post;
+    }
+    return $response;
+});
