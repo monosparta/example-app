@@ -36,4 +36,5 @@ php laravel不支援直接輸出JSON，物件需用陣列改寫 */
 //     return [json => content];	
 // }); 
 
-Route::post("/trail", [TrailController::class, 'createNewTrail']);
+Route::resource('trail', TrailController::class);
+// Route::post("/trail", [TrailController::class, 'createNewTrail']);

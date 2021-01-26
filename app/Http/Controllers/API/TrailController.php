@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class TrailController extends Controller
 {
-    public function createNewTrail(Request $request) {
+    public function store(Request $request) {
         if ($request->header('X-Secure-Code') != '123456789') {
             return response(['error' => 'Secure code nt valid.'], 403);
         } else {
