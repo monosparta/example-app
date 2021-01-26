@@ -30,7 +30,7 @@ class ExampleTest extends TestCase
     {
         $response = $this->withHeaders([
             'X-Secure-Code' => '1234',
-        ])->getJson('/api/collection/0');
+        ])->getJson('/api/collection/1');
 
         $response
             ->assertStatus(200)
@@ -41,7 +41,6 @@ class ExampleTest extends TestCase
                 'subTitle',
                 'bgColor',
                 'iconImage',
-                'trails',
             ]);
     }
 }
